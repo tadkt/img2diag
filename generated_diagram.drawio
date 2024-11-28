@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Diagram">
+    <mxGraphModel dx="1400" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="root" parent="0" />
+        <mxCell id="cell1" value="Vấn đề: bị cháo dây" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="root">
+          <mxGeometry x="100" y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cell2" value="Máy A" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="root">
+          <mxGeometry x="100" y="150" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cell3" value="Nóng thiết bị AB" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="root">
+          <mxGeometry x="250" y="150" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cell4" value="Biến đổi nhiệt 5°C" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="root">
+          <mxGeometry x="400" y="150" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cell5" value="Sản phẩm bất thường mã ABC" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="root">
+          <mxGeometry x="550" y="150" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cell6" value="Tốc độ máy dao động 0,9" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="root">
+          <mxGeometry x="400" y="250" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" edge="1" parent="root" source="cell1" target="cell2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" edge="1" parent="root" source="cell2" target="cell3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" edge="1" parent="root" source="cell3" target="cell4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" edge="1" parent="root" source="cell4" target="cell5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" edge="1" parent="root" source="cell4" target="cell6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
