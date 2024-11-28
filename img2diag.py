@@ -3,6 +3,7 @@ import base64
 import os
 from PIL import Image
 from dotenv import load_dotenv
+from draw import jsonl2graph
 
 load_dotenv()
 
@@ -10,6 +11,15 @@ load_dotenv()
 def open_image():
     Imagefile = input("Enter the path of input image: ")
     return Imagefile
+
+def process_jsonl_str(json_str):
+    jsonl_content = json_str.split("```")[1]
+    if repr(jsonl_content.startswith(r"json\n")):
+        jsonl_content = jsonl_content[4:]
+    elif repr(jsonl_content.startswith(r"jsonl\n")):
+        jsonl_content = jsonl_content[5:]
+    return f"{jsonl_content}\n"
+    # return jsonl_content
 
 def img2jsonl(image_path):
     client = OpenAI()
@@ -80,13 +90,16 @@ def img2jsonl(image_path):
         },
     ],
     )
-    response2 = repr(response.choices[0].message.content)
+    response2 = response.choices[0].message.content
     return response2
 
 def main():
     image_path = open_image()
     jsonl_str = img2jsonl(image_path=image_path)
-    print(jsonl_str)
+    print(f"Before process: {jsonl_str}")
+    jsonl_content = process_jsonl_str(json_str=jsonl_str)
+    print(repr(jsonl_content))
+    jsonl2graph(jsonl_content)
 
 if __name__ == "__main__":
     main()
