@@ -136,10 +136,10 @@ def jsonl2graph(jsonl_content, diag_name: Optional[str] = None):
                                     textposition="top center",
                                     textfont=dict(size=12),))
     if diag_name:
-        if not os.path.exists("./img2diag/images"):
-            os.makedirs("./img2diag/images")
-        file_path = os.path.join("./img2diag/images", diag_name)
-        fig.write_image(os.path.join("./img2diag/images", diag_name))
+        if not os.path.exists("./images"):
+            os.makedirs("./images")
+        file_path = os.path.join("./images", diag_name)
+        fig.write_image(os.path.join("./images", diag_name))
         return file_path
     else:
         fig.show()
