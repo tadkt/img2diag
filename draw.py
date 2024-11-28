@@ -11,16 +11,22 @@ import plotly.graph_objects as go
 # {"type": "arrow", "data": {"source": "2", "target": "3", "label": "Tốc độ máy dao động 0.9"}}
 # """
 
+# # Corrected input
+# jsonl_content = """
+# {"type": "node", "data": {"id": "1", "label": "CNC", "x1": -100, "y1": 0, "x2": 0, "y2": 50}}
+# {"type": "node", "data": {"id": "2", "label": "Đầu khoan cứng", "x1": 100, "y1": 0, "x2": 200, "y2": 50}}
+# {"type": "node", "data": {"id": "3", "label": "Lệch 0.5mm", "x1": 100, "y1": -150, "x2": 200, "y2": -100}}
+# {"type": "node", "data": {"id": "4", "label": "Sản phẩm kém chất lượng", "x1": 300, "y1": -150, "x2": 400, "y2": -100}}
+# {"type": "node", "data": {"id": "5", "label": "Máy dao động nhiều", "x1": 100, "y1": -300, "x2": 200, "y2": -250}}
+# {"type": "arrow", "data": {"id": "a1", "label": "Vấn đề", "x1": 0, "y1": 25, "x2": 100, "y2": 25}}
+# {"type": "arrow", "data": {"id": "a2", "label": "", "x1": 150, "y1": 0, "x2": 150, "y2": -100}}
+# {"type": "arrow", "data": {"id": "a3", "label": "", "x1": 200, "y1": -125, "x2": 300, "y2": -125}}
+# {"type": "arrow", "data": {"id": "a4", "label": "", "x1": 200, "y1": -275, "x2": 350, "y2": -275, "x3": 350, "y3": -150}}
+# """
+
+# Trial input
 jsonl_content = """
-{"type": "node", "data": {"id": "1", "label": "CNC", "x1": -100, "y1": 0, "x2": 0, "y2": 50}}
-{"type": "node", "data": {"id": "2", "label": "Đầu khoan cứng", "x1": 100, "y1": 0, "x2": 200, "y2": 50}}
-{"type": "node", "data": {"id": "3", "label": "Lệch 0.5mm", "x1": 100, "y1": -150, "x2": 200, "y2": -100}}
-{"type": "node", "data": {"id": "4", "label": "Sản phẩm kém chất lượng", "x1": 300, "y1": -150, "x2": 400, "y2": -100}}
-{"type": "node", "data": {"id": "5", "label": "Máy dao động nhiều", "x1": 100, "y1": -300, "x2": 200, "y2": -250}}
-{"type": "arrow", "data": {"id": "a1", "label": "Vấn đề", "x1": 0, "y1": 25, "x2": 100, "y2": 25}}
-{"type": "arrow", "data": {"id": "a2", "label": "", "x1": 150, "y1": 0, "x2": 150, "y2": -100}}
-{"type": "arrow", "data": {"id": "a3", "label": "", "x1": 200, "y1": -125, "x2": 300, "y2": -125}}
-{"type": "arrow", "data": {"id": "a4", "label": "", "x1": 200, "y1": -275, "x2": 350, "y2": -275, "x3": 350, "y3": -150}}
+{"type": "node", "data": {"id": "1", "label": "Máy A", "x1": -50, "y1": -50, "x2": 50, "y2": 0}}\n{"type": "node", "data": {"id": "2", "label": "Nóng thiết bị AB", "x1": -100, "y1": -25, "x2": 0, "y2": 25}}\n{"type": "node", "data": {"id": "3", "label": "Biến đổi nhiệt 5°C", "x1": 50, "y1": -25, "x2": 150, "y2": 25}}\n{"type": "node", "data": {"id": "4", "label": "Sản phẩm bất thường nhiệt ABC", "x1": 200, "y1": -25, "x2": 350, "y2": 25}}\n{"type": "arrow", "data": {"id": "1", "label": "", "x1": 0, "y1": 0, "x2": -100, "y2": 0}}\n{"type": "arrow", "data": {"id": "2", "label": "Tốc độ máy dao động 0.9", "x1": 0, "y1": 0, "x2": 100, "y2": 0}}\n{"type": "arrow", "data": {"id": "3", "label": "", "x1": 150, "y1": 0, "x2": 200, "y2": 0}}\n
 """
 # Parse nodes and arrows
 nodes = {}
