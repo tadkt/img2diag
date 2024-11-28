@@ -18,9 +18,9 @@ jsonl_content = """
 {"type": "node", "data": {"id": "4", "label": "Sản phẩm kém chất lượng", "x1": 300, "y1": -150, "x2": 400, "y2": -100}}
 {"type": "node", "data": {"id": "5", "label": "Máy dao động nhiều", "x1": 100, "y1": -300, "x2": 200, "y2": -250}}
 {"type": "arrow", "data": {"id": "a1", "label": "Vấn đề", "x1": 0, "y1": 25, "x2": 100, "y2": 25}}
-{"type": "arrow", "data": {"id": "a2", "label": "", "x1": 150, "y1": 25, "x2": 150, "y2": -125, "x3": 150, "y3": -25}}
+{"type": "arrow", "data": {"id": "a2", "label": "", "x1": 150, "y1": 0, "x2": 150, "y2": -100}}
 {"type": "arrow", "data": {"id": "a3", "label": "", "x1": 200, "y1": -125, "x2": 300, "y2": -125}}
-{"type": "arrow", "data": {"id": "a4", "label": "", "x1": 150, "y1": -275, "x2": 300, "y2": -125, "x3": 150, "y3": -150}}
+{"type": "arrow", "data": {"id": "a4", "label": "", "x1": 200, "y1": -275, "x2": 350, "y2": -275, "x3": 350, "y3": -150}}
 """
 # Parse nodes and arrows
 nodes = {}
@@ -99,23 +99,29 @@ for idx in range(len(node_x1)):
 for idx in range(len(edge_x1)):
     if edge_x3[idx] is not None and edge_y3[idx] is not None:
         fig.add_shape(type="line", x0=edge_x1[idx], y0=edge_y1[idx], x1=edge_x2[idx], y1=edge_y2[idx])
-        fig.add_trace(go.Scatter(x=[edge_x2[idx], edge_x3[idx]], y=[edge_y2[idx], edge_y3[idx]], mode="markers+lines",
-                                 marker=dict(
+        fig.add_trace(go.Scatter(x=[edge_x2[idx], edge_x3[idx]], y=[edge_y2[idx], edge_y3[idx]], mode="lines+markers+text",
+                                marker=dict(
                                     size=10,  # Size of the arrow marker
                                     symbol="arrow-bar-up",  # Arrow marker type
                                     angleref="previous",  # Angle reference relative to the previous point
                                 ),
-                                name=edge_text[idx],))
+                                # line=dict(color="black"),
+                                text=[None, edge_text[idx]],
+                                textposition="top center",
+                                textfont=dict(size=12),))
         # fig.add_shape(type="line", x0=edge_x2[idx], y0=edge_y2[idx], x1=edge_x3[idx], y1=edge_y3[idx], label=dict(text=edge_text[idx]))
     else:
         # fig.add_shape(type="line", x0=edge_x1[idx], y0=edge_y1[idx], x1=edge_x2[idx], y1=edge_y2[idx], label=dict(text=edge_text[idx]))
-        fig.add_trace(go.Scatter(x=[edge_x1[idx], edge_x2[idx]], y=[edge_y1[idx], edge_y2[idx]], mode="markers+lines",
-                            marker=dict(
-                            size=10,  # Size of the arrow marker
-                            symbol="arrow-bar-up",  # Arrow marker type
-                            angleref="previous",  # Angle reference relative to the previous point
-                        ),
-                        name=edge_text[idx],))
+        fig.add_trace(go.Scatter(x=[edge_x1[idx], edge_x2[idx]], y=[edge_y1[idx], edge_y2[idx]], mode="lines+markers+text",
+                                marker=dict(
+                                    size=10,  # Size of the arrow marker
+                                    symbol="arrow-bar-up",  # Arrow marker type
+                                    angleref="previous",  # Angle reference relative to the previous point
+                                ),
+                                # line=dict(color="black"),
+                                text=[None, edge_text[idx]],
+                                textposition="top center",
+                                textfont=dict(size=12),))
 fig.show()
 
 
