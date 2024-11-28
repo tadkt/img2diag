@@ -1,0 +1,8 @@
+kaleido==0.1.0
+streamlit
+openai
+pillow
+plotly
+psutil
+requests
+plotly-orca

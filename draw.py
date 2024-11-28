@@ -1,5 +1,10 @@
 import json
 import plotly.graph_objects as go
+import os
+from typing import Optional
+import kaleido
+
+
 
 # # Parse the JSONL content
 # jsonl_content = """
@@ -29,7 +34,7 @@ jsonl_content = """
 {"type": "node", "data": {"id": "1", "label": "Máy A", "x1": -150, "y1": 50, "x2": -50, "y2": 150}}\n{"type": "node", "data": {"id": "2", "label": "Nóng thiết bị AB", "x1": -50, "y1": -50, "x2": 150, "y2": 50}}\n{"type": "node", "data": {"id": "3", "label": "Sản phẩm bất thường mã ABC", "x1": 200, "y1": -50, "x2": 400, "y2": 50}}\n{"type": "arrow", "data": {"id": "4", "label": "Biến đổi nhiệt 5°C", "x1": -50, "y1": 50, "x2": 200, "y2": 0}}\n{"type": "arrow", "data": {"id": "5", "label": "Tốc độ máy dao động 0,9", "x1": 50, "y1": 50, "x2": 200, "y2": 50}}\n
 """
 
-def jsonl2graph(jsonl_content):
+def jsonl2graph(jsonl_content, diag_name: Optional[str] = None):
     # Parse nodes and arrows
     nodes = {}
     arrows = {}
@@ -130,11 +135,18 @@ def jsonl2graph(jsonl_content):
                                     text=[None, edge_text[idx]],
                                     textposition="top center",
                                     textfont=dict(size=12),))
-    fig.show()
+    if diag_name:
+        if not os.path.exists("./img2diag/images"):
+            os.makedirs("./img2diag/images")
+        file_path = os.path.join("./img2diag/images", diag_name)
+        fig.write_image(os.path.join("./img2diag/images", diag_name))
+        return file_path
+    else:
+        fig.show()
 
 def main():
-    # jsonl2graph(jsonl_content)
-    print(repr(jsonl_content))
+    output = jsonl2graph(jsonl_content, "hello2.jpg")
+    print(output)
 
 if __name__ == "__main__":
     main()

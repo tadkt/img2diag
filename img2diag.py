@@ -96,10 +96,8 @@ def img2jsonl(image_path):
 def main():
     image_path = open_image()
     jsonl_str = img2jsonl(image_path=image_path)
-    print(f"Before process: {jsonl_str}")
     jsonl_content = process_jsonl_str(json_str=jsonl_str)
-    print(repr(jsonl_content))
-    jsonl2graph(jsonl_content)
+    jsonl2graph(jsonl_content, "hello.jpg")
 
 if __name__ == "__main__":
     main()
