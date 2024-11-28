@@ -104,6 +104,9 @@ def jsonl2graph(jsonl_content, diag_name: Optional[str] = None):
     fig = go.Figure()
     fig.update_xaxes(showgrid=False)
     fig.update_yaxes(showgrid=False)
+    fig.update_layout(showlegend=False)
+    fig.update_xaxes(visible=False)
+    fig.update_yaxes(visible=False)
     fig.update_layout( polar_radialaxis_gridcolor="#ff0000", polar_angularaxis_gridcolor="#0000ff", )
 
     for idx in range(len(node_x1)):
