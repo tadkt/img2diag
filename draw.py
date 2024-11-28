@@ -16,23 +16,23 @@ import kaleido
 # {"type": "arrow", "data": {"source": "2", "target": "3", "label": "Tốc độ máy dao động 0.9"}}
 # """
 
-# # Corrected input
-# jsonl_content = """
-# {"type": "node", "data": {"id": "1", "label": "CNC", "x1": -100, "y1": 0, "x2": 0, "y2": 50}}
-# {"type": "node", "data": {"id": "2", "label": "Đầu khoan cứng", "x1": 100, "y1": 0, "x2": 200, "y2": 50}}
-# {"type": "node", "data": {"id": "3", "label": "Lệch 0.5mm", "x1": 100, "y1": -150, "x2": 200, "y2": -100}}
-# {"type": "node", "data": {"id": "4", "label": "Sản phẩm kém chất lượng", "x1": 300, "y1": -150, "x2": 400, "y2": -100}}
-# {"type": "node", "data": {"id": "5", "label": "Máy dao động nhiều", "x1": 100, "y1": -300, "x2": 200, "y2": -250}}
-# {"type": "arrow", "data": {"id": "a1", "label": "Vấn đề", "x1": 0, "y1": 25, "x2": 100, "y2": 25}}
-# {"type": "arrow", "data": {"id": "a2", "label": "", "x1": 150, "y1": 0, "x2": 150, "y2": -100}}
-# {"type": "arrow", "data": {"id": "a3", "label": "", "x1": 200, "y1": -125, "x2": 300, "y2": -125}}
-# {"type": "arrow", "data": {"id": "a4", "label": "", "x1": 200, "y1": -275, "x2": 350, "y2": -275, "x3": 350, "y3": -150}}
-# """
-
-# Trial input
+# Corrected input
 jsonl_content = """
-{"type": "node", "data": {"id": "1", "label": "Máy A", "x1": -150, "y1": 50, "x2": -50, "y2": 150}}\n{"type": "node", "data": {"id": "2", "label": "Nóng thiết bị AB", "x1": -50, "y1": -50, "x2": 150, "y2": 50}}\n{"type": "node", "data": {"id": "3", "label": "Sản phẩm bất thường mã ABC", "x1": 200, "y1": -50, "x2": 400, "y2": 50}}\n{"type": "arrow", "data": {"id": "4", "label": "Biến đổi nhiệt 5°C", "x1": -50, "y1": 50, "x2": 200, "y2": 0}}\n{"type": "arrow", "data": {"id": "5", "label": "Tốc độ máy dao động 0,9", "x1": 50, "y1": 50, "x2": 200, "y2": 50}}\n
+{"type": "node", "data": {"id": "1", "label": "CNC", "x1": -100, "y1": 0, "x2": 0, "y2": 50}}
+{"type": "node", "data": {"id": "2", "label": "Đầu khoan cứng", "x1": 100, "y1": 0, "x2": 200, "y2": 50}}
+{"type": "node", "data": {"id": "3", "label": "Lệch 0.5mm", "x1": 100, "y1": -150, "x2": 200, "y2": -100}}
+{"type": "node", "data": {"id": "4", "label": "Sản phẩm kém chất lượng", "x1": 300, "y1": -150, "x2": 400, "y2": -100}}
+{"type": "node", "data": {"id": "5", "label": "Máy dao động nhiều", "x1": 100, "y1": -300, "x2": 200, "y2": -250}}
+{"type": "arrow", "data": {"id": "a1", "label": "Vấn đề", "x1": 0, "y1": 25, "x2": 100, "y2": 25}}
+{"type": "arrow", "data": {"id": "a2", "label": "", "x1": 150, "y1": 0, "x2": 150, "y2": -100}}
+{"type": "arrow", "data": {"id": "a3", "label": "", "x1": 200, "y1": -125, "x2": 300, "y2": -125}}
+{"type": "arrow", "data": {"id": "a4", "label": "", "x1": 200, "y1": -275, "x2": 350, "y2": -275, "x3": 350, "y3": -150}}
 """
+
+# # Trial input
+# jsonl_content = """
+# {"type": "node", "data": {"id": "1", "label": "Máy A", "x1": -150, "y1": 50, "x2": -50, "y2": 150}}\n{"type": "node", "data": {"id": "2", "label": "Nóng thiết bị AB", "x1": -50, "y1": -50, "x2": 150, "y2": 50}}\n{"type": "node", "data": {"id": "3", "label": "Sản phẩm bất thường mã ABC", "x1": 200, "y1": -50, "x2": 400, "y2": 50}}\n{"type": "arrow", "data": {"id": "4", "label": "Biến đổi nhiệt 5°C", "x1": -50, "y1": 50, "x2": 200, "y2": 0}}\n{"type": "arrow", "data": {"id": "5", "label": "Tốc độ máy dao động 0,9", "x1": 50, "y1": 50, "x2": 200, "y2": 50}}\n
+# """
 
 def jsonl2graph(jsonl_content, diag_name: Optional[str] = None):
     # Parse nodes and arrows
@@ -102,6 +102,9 @@ def jsonl2graph(jsonl_content, diag_name: Optional[str] = None):
 
     # Plot
     fig = go.Figure()
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=False)
+    fig.update_layout( polar_radialaxis_gridcolor="#ff0000", polar_angularaxis_gridcolor="#0000ff", )
 
     for idx in range(len(node_x1)):
         fig.add_shape(type="rect", x0=node_x1[idx], y0=node_y1[idx], x1=node_x2[idx], y1=node_y2[idx])
@@ -120,7 +123,7 @@ def jsonl2graph(jsonl_content, diag_name: Optional[str] = None):
                                     ),
                                     # line=dict(color="black"),
                                     text=[None, edge_text[idx]],
-                                    textposition="top center",
+                                    textposition="middle left",
                                     textfont=dict(size=12),))
             # fig.add_shape(type="line", x0=edge_x2[idx], y0=edge_y2[idx], x1=edge_x3[idx], y1=edge_y3[idx], label=dict(text=edge_text[idx]))
         else:
@@ -133,7 +136,7 @@ def jsonl2graph(jsonl_content, diag_name: Optional[str] = None):
                                     ),
                                     # line=dict(color="black"),
                                     text=[None, edge_text[idx]],
-                                    textposition="top center",
+                                    textposition="middle left",
                                     textfont=dict(size=12),))
     if diag_name:
         if not os.path.exists("./images"):
