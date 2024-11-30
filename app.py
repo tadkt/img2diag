@@ -8,8 +8,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def main():
-    st.title("DENSO OCR")
+    st.title("Factory Diagram Generation")
 
     image_file = st.file_uploader("Upload image:", type=["jpg", "png", "jpeg"])
     if image_file:
